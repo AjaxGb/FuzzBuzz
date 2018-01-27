@@ -13,8 +13,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Player
+  - Terrain
   - 
   - 
   - 
@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Walls
+    uniqueID: 2440213083
+    locked: 0
+  - name: WallDecor
+    uniqueID: 2089036285
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: HighlightParticles
+    uniqueID: 1934268513
+    locked: 0
+  - name: Player
+    uniqueID: 3669698379
     locked: 0
