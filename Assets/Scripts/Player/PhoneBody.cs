@@ -5,10 +5,17 @@ using UnityEngine;
 
 public class PhoneBody : PossessableBase {
 
+	public float ringDelay = 1;
+	public AudioSource audioSource;
+
+	void Start() {
+		if (!audioSource) audioSource = GetComponent<AudioSource>();
+	}
+
 	protected override void OnPossessed() {
 		Possessor.ReturnToBody();
 
-		Debug.Log("Ring Ring");
+		audioSource.PlayDelayed(ringDelay);
 	}
 
 	public override void PossessedUpdate() {}
