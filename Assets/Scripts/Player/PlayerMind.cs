@@ -130,5 +130,6 @@ public class PlayerMind : MonoBehaviour {
 
 		transferParticles.Stop();
 		transferDisplayCoroutine = null;
+		RoomExit.CheckForExit(currentBody);
 	}
 }
