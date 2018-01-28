@@ -46,10 +46,10 @@ public class RoombaBody : PossessableBase {
 	}
 
 	protected override void OnPossessed() {
-		animator.SetBool(animKeyPossessed, true);
+		//animator.SetBool(animKeyPossessed, true);
 	}
 
 	protected override void OnUnpossessed() {
-		animator.SetBool(animKeyPossessed, false);
+		//animator.SetBool(animKeyPossessed, false);
 	}
 }

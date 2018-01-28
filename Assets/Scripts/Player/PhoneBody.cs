@@ -10,6 +10,7 @@ public class PhoneBody : PossessableBase {
 	public float undistractDelay = 5;
 	public AudioSource ringAudio;
 
+	public Animator phoneAnimator;
 	public Animator distractedAnimator;
 	public string distractedKey = "Distracted";
 
@@ -17,9 +18,13 @@ public class PhoneBody : PossessableBase {
 	public float distractedEndTime;
 
 	private Coroutine alertGuyRoutine;
+	private int animKeyRing;
 
 	void Start() {
 		if (!ringAudio) ringAudio = GetComponent<AudioSource>();
+		if (!phoneAnimator) phoneAnimator = GetComponent<Animator>();
+
+		animKeyRing = Animator.StringToHash("Ring");
 	}
 
 	void Update() {
@@ -40,6 +45,7 @@ public class PhoneBody : PossessableBase {
 
 		yield return new WaitForSeconds(ringDelay);
 
+		phoneAnimator.SetTrigger(animKeyRing);
 		ringAudio.Play();
 
 		yield return new WaitForSeconds(distractDelay);
