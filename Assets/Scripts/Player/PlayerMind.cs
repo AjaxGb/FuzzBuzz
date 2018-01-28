@@ -10,20 +10,20 @@ public class PlayerMind : MonoBehaviour {
 	public PossessableBase currentBody;
 
 	public ParticleSystem possessHighlightPrefab;
-	public ParticleSystem transferHighlightPrefab;
+	public ParticleSystem transferParticles;
+
+	public AudioClip transferSE;
+	public AudioSource audioSource;
 
 	public float clickRadius = 5f;
 	public float transferTime = 1f;
 	public float transferAtEndTime = 0.2f;
-	
-	private PossessableBase lastTargetBody;
-
-	private ParticleSystem possessHighlight;
-	private ParticleSystem transferHighlight;
-
-	private Coroutine transferDisplayCoroutine;
 
 	public bool stopUpdates;
+	
+	private PossessableBase lastTargetBody;
+	private ParticleSystem possessHighlight;
+	private Coroutine transferDisplayCoroutine;
 
 	// Use this for initialization
 	void Start() {
@@ -31,14 +31,16 @@ public class PlayerMind : MonoBehaviour {
 		Inst = this;
 
 		possessHighlight = Instantiate(possessHighlightPrefab);
-		transferHighlight = Instantiate(transferHighlightPrefab);
+		if (!transferParticles) transferParticles = GetComponent<ParticleSystem>();
+		if (!audioSource) audioSource = GetComponent<AudioSource>();
+
 		Possess(realBody);
 	}
 	
 	// Update is called once per frame
 	void Update() {
 		if (transferDisplayCoroutine == null) {
-			transferHighlight.transform.position = currentBody.transform.position;
+			transferParticles.transform.position = currentBody.transform.position;
 		}
 
 		if (stopUpdates) return;
@@ -77,9 +79,11 @@ public class PlayerMind : MonoBehaviour {
 			StopCoroutine(transferDisplayCoroutine);
 			transferDisplayCoroutine = null;
 		}
+
 		if (currentBody) {
 			currentBody.DoUnpossess();
 			stopUpdates = true;
+			audioSource.PlayOneShot(transferSE);
 			transferDisplayCoroutine = StartCoroutine(
 				ShowTransfer(currentBody.transform, body.transform, transferTime, transferAtEndTime));
 		}
@@ -94,8 +98,8 @@ public class PlayerMind : MonoBehaviour {
 	}
 
 	IEnumerator ShowTransfer(Transform from, Transform to, float transferDuration, float waitAtEndDuration) {
-		transferHighlight.transform.position = from.position;
-		transferHighlight.Play();
+		transferParticles.transform.position = from.position;
+		transferParticles.Play();
 
 		float startTime = Time.time;
 		float endTime = startTime + transferDuration;
@@ -103,7 +107,7 @@ public class PlayerMind : MonoBehaviour {
 
 		while (Time.time < endTime) {
 			float t = Mathf.InverseLerp(startTime, endTime, Time.time);
-			transferHighlight.transform.position = Vector3.Lerp(from.position, to.position, t);
+			transferParticles.transform.position = Vector3.Lerp(from.position, to.position, t);
 			yield return null;
 		}
 		
@@ -118,11 +122,11 @@ public class PlayerMind : MonoBehaviour {
 		endTime = startTime + waitAtEndDuration;
 
 		while (Time.time < endTime) {
-			transferHighlight.transform.position = to.position;
+			transferParticles.transform.position = to.position;
 			yield return null;
 		}
 
-		transferHighlight.Stop();
+		transferParticles.Stop();
 		transferDisplayCoroutine = null;
 	}
 }
