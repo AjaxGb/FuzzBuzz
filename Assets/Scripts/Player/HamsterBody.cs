@@ -13,6 +13,7 @@ public class HamsterBody : PossessableBase {
 	
 	public Animator animator;
 	public Physics2DMovement movement;
+	public Collider2D groundCollider;
 
 	private int animKeyPossessed;
 	private int animKeyInputStrength;
@@ -20,6 +21,8 @@ public class HamsterBody : PossessableBase {
 
 	private float liveGravity;
 	private float emptyGravity;
+
+	private static Collider2D[] singleColliderArr = new Collider2D[1];
 
 	void Start() {
 		if (!animator) animator = GetComponent<Animator>();
@@ -37,7 +40,7 @@ public class HamsterBody : PossessableBase {
 		float horizInput = Input.GetAxis("Horizontal");
 		float vertInput = 0;
 
-		bool onGround = true;
+		bool onGround = 0 < groundCollider.GetContacts(singleColliderArr);
 		if (Input.GetButtonDown("Jump") && onGround) {
 			vertInput = 1;
 			animator.SetTrigger(animKeyJump);
