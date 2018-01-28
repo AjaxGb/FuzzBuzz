@@ -84,6 +84,12 @@ public class PlayerMind : MonoBehaviour {
 		possessHighlight.Stop();
 	}
 
+	public void ReturnToBody() {
+		if (currentBody != realBody) {
+			Possess(realBody);
+		}
+	}
+
 	IEnumerator ShowTransfer(Transform from, Transform to, float transferDuration, float waitAtEndDuration) {
 		transferHighlight.transform.position = from.position;
 		transferHighlight.Play();
