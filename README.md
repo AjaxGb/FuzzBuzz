@@ -4,7 +4,7 @@
 A hamster-shaped alien crash-lands on Earth. Using his mental mastery over technology,
 he must take control of the Earthlings' appliances to get his ship back and return home.
 
-### CONTROLS:
+### CONTROLS + TIPS:
 - Left click to take control of technology. This will leave your body comatose and defenseless!
 - Left click again to return to your body.
 - WASD + Space to move around.
