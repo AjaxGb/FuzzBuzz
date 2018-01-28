@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: RunAtlas
+  m_EditorData:
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 8192
+      textureCompression: 2
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingParameters:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: fd9ccef223fcd5242a91e2fd8748aced, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 74522ff1147e55f42a0f1dbf505673fa, type: 3}
+  - {fileID: 21300000, guid: 285e2309e98079a4e8bc02ddfb18e6d0, type: 3}
+  - {fileID: 21300000, guid: 50436a6548e243641b0f1e3346fa0807, type: 3}
+  - {fileID: 21300000, guid: 84f80073afa814e4181e53a6e6263ba8, type: 3}
+  - {fileID: 21300000, guid: b38995a136327c34d85197257799a754, type: 3}
+  - {fileID: 21300000, guid: bee0ea560170d794b94d272bce3c88cf, type: 3}
+  - {fileID: 21300000, guid: c1781d57508d8b649b1b3ca841816f7a, type: 3}
+  - {fileID: 21300000, guid: a744cc7de9e28d84e95a50686fdcc4d7, type: 3}
+  - {fileID: 21300000, guid: 3be87c5a87d26fd4883e09d597bf64fe, type: 3}
+  - {fileID: 21300000, guid: f5b7cc95c4a901044ba6dd2d7b4edbde, type: 3}
+  - {fileID: 21300000, guid: f5dce75780f0292418a85defb621da5b, type: 3}
+  - {fileID: 21300000, guid: aa797a262f6d3944c83cc312c1dc7c70, type: 3}
+  - {fileID: 21300000, guid: a8e8ad4d75a3b904eb901b5c1234f3af, type: 3}
+  - {fileID: 21300000, guid: 50dedae90f50fc245b760addeb02f19b, type: 3}
+  - {fileID: 21300000, guid: e8c1030dbb2521c4bac52051ecaf50e2, type: 3}
+  - {fileID: 21300000, guid: f6b589aefa19ea441a922d789df01605, type: 3}
+  - {fileID: 21300000, guid: 4105bf27e82b93642a637ec94fc7a9c8, type: 3}
+  - {fileID: 21300000, guid: 218efddcaf16e344e97a9ca5475fca78, type: 3}
+  - {fileID: 21300000, guid: 3c5530eaa4650d24393a73418f351c04, type: 3}
+  - {fileID: 21300000, guid: d0cd7a714ce4a614abb5c3b91784e432, type: 3}
+  - {fileID: 21300000, guid: e6b73227ce84da641b19c93c7415a6b3, type: 3}
+  - {fileID: 21300000, guid: 309083d3e7c51c24990beba0b585b635, type: 3}
+  - {fileID: 21300000, guid: e7cb4ed1dde2be340a3c5c2034775da6, type: 3}
+  - {fileID: 21300000, guid: 119103a0523620041b044d0a4208892d, type: 3}
+  - {fileID: 21300000, guid: 2353cada24c28194aa7ee7aa466cd573, type: 3}
+  - {fileID: 21300000, guid: fff91bb37ca4eec498309ef7731782e0, type: 3}
+  - {fileID: 21300000, guid: b8abb41494c41e24bb95ba5029d3ddb4, type: 3}
+  - {fileID: 21300000, guid: 0225b668620d9f24baef0a46d3ee7313, type: 3}
+  - {fileID: 21300000, guid: 46165a9fd82b9ed4ba0dc9efedee169b, type: 3}
+  - {fileID: 21300000, guid: 5344e4dd74c44bb45a91b43f401f51fc, type: 3}
+  - {fileID: 21300000, guid: f8abadd2352b5424cadbfa9b2d689074, type: 3}
+  - {fileID: 21300000, guid: ac686f640383eab4f9fa1e78a92a4ea9, type: 3}
+  - {fileID: 21300000, guid: 545e05eb1c9e2a3419692c8a3c387a7b, type: 3}
+  - {fileID: 21300000, guid: d7ea33b31086a304c95a384c64f96cf2, type: 3}
+  - {fileID: 21300000, guid: 6373d7d41ab2afc46ab274c1b0e68313, type: 3}
+  - {fileID: 21300000, guid: 8c42dd4d5edff984eba5865d256d42b3, type: 3}
+  - {fileID: 21300000, guid: a045934c192a0f944bb369131194d4ee, type: 3}
+  - {fileID: 21300000, guid: 74310bba9256e3b4eb4b0a68ba38b1c5, type: 3}
+  - {fileID: 21300000, guid: d2ab426a2519d8344a63ba1616a2d411, type: 3}
+  - {fileID: 21300000, guid: 477f09b3f4e8f8d4ca2712349502a9c5, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - hamsterrunning0040
+  - hamsterrunning0022
+  - hamsterrunning0023
+  - hamsterrunning0020
+  - hamsterrunning0021
+  - hamsterrunning0035
+  - hamsterrunning0026
+  - hamsterrunning0034
+  - hamsterrunning0027
+  - hamsterrunning0037
+  - hamsterrunning0024
+  - hamsterrunning0036
+  - hamsterrunning0025
+  - hamsterrunning0031
+  - hamsterrunning0030
+  - hamsterrunning0033
+  - hamsterrunning0028
+  - hamsterrunning0032
+  - hamsterrunning0029
+  - hamsterrunning0039
+  - hamsterrunning0038
+  - hamsterrunning0019
+  - hamsterrunning0018
+  - hamsterrunning0017
+  - hamsterrunning0016
+  - hamsterrunning0015
+  - hamsterrunning0014
+  - hamsterrunning0013
+  - hamsterrunning0012
+  - hamsterrunning0011
+  - hamsterrunning0010
+  - hamsterrunning0008
+  - hamsterrunning0009
+  - hamsterrunning0004
+  - hamsterrunning0005
+  - hamsterrunning0006
+  - hamsterrunning0007
+  - hamsterrunning0001
+  - hamsterrunning0002
+  - hamsterrunning0003
+  m_Tag: RunAtlas
+  m_IsVariant: 0

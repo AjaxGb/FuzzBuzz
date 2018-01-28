@@ -15,6 +15,8 @@ public class HamsterBody : PossessableBase {
 	public Physics2DMovement movement;
 
 	private int animKeyPossessed;
+	private int animKeyInputStrength;
+	private int animKeyJump;
 
 	private float liveGravity;
 	private float emptyGravity;
@@ -27,10 +29,19 @@ public class HamsterBody : PossessableBase {
 		emptyGravity = liveGravity * emptyGravityScale;
 
 		animKeyPossessed = Animator.StringToHash("Possessed");
+		animKeyInputStrength = Animator.StringToHash("InputStrength");
+		animKeyJump = Animator.StringToHash("Jump");
 	}
 
 	public override void PossessedUpdate() {
 		float horizInput = Input.GetAxis("Horizontal");
+		float vertInput = 0;
+
+		bool onGround = true;
+		if (Input.GetButtonDown("Jump") && onGround) {
+			vertInput = 1;
+			animator.SetTrigger(animKeyJump);
+		}
 
 		Vector3 currScale = transform.localScale;
 		if (horizInput < -0.1f) {
@@ -40,7 +51,8 @@ public class HamsterBody : PossessableBase {
 		}
 		transform.localScale = currScale;
 
-		movement.Move(horizInput, Input.GetButton("Jump") ? 1 : 0);
+		animator.SetFloat(animKeyInputStrength, Mathf.Abs(horizInput));
+		movement.Move(horizInput, vertInput);
 	}
 
 	protected override void OnPossessed() {
