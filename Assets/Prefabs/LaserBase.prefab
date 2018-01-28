@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4031878740407722}
   - component: {fileID: 212818350547787352}
+  - component: {fileID: 95975684285739558}
   m_Layer: 0
   m_Name: LaserTip
   m_TagString: Untagged
@@ -56,7 +57,6 @@ GameObject:
   - component: {fileID: 212625057121525750}
   - component: {fileID: 61772661355154226}
   - component: {fileID: 114847158777961758}
-  - component: {fileID: 95283184045187338}
   m_Layer: 0
   m_Name: LaserBase
   m_TagString: Untagged
@@ -155,13 +155,13 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6046438, y: 0.387286}
   m_EdgeRadius: 0.3
---- !u!95 &95283184045187338
+--- !u!95 &95975684285739558
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1402841222948168}
+  m_GameObject: {fileID: 1055081427168002}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: f9a9945fc1d5c6f4f8c1cfbb6b4050a4, type: 2}
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offTime: 3
-  animator: {fileID: 95283184045187338}
+  animator: {fileID: 95975684285739558}
   isOff: 0
   offEndTime: 0
 --- !u!212 &212625057121525750
