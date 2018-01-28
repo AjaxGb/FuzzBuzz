@@ -10,8 +10,8 @@ public class PhoneBody : PossessableBase {
 	public float undistractDelay = 5;
 	public AudioSource ringAudio;
 
-	public GameObject[] undistractedStuff;
-	public GameObject[] distractedStuff;
+	public Animator distractedAnimator;
+	public string distractedKey = "Distracted";
 
 	public bool isDistracted;
 	public float distractedEndTime;
@@ -26,12 +26,7 @@ public class PhoneBody : PossessableBase {
 		if (isDistracted && Time.time > distractedEndTime) {
 			isDistracted = false;
 
-			foreach (GameObject go in undistractedStuff) {
-				go.SetActive(true);
-			}
-			foreach (GameObject go in distractedStuff) {
-				go.SetActive(false);
-			}
+			distractedAnimator.SetBool(distractedKey, false);
 		}
 	}
 
@@ -49,14 +44,9 @@ public class PhoneBody : PossessableBase {
 
 		yield return new WaitForSeconds(distractDelay);
 
-		foreach (GameObject go in undistractedStuff) {
-			go.SetActive(false);
-		}
-		foreach (GameObject go in distractedStuff) {
-			go.SetActive(true);
-		}
-
 		isDistracted = true;
+		distractedAnimator.SetBool(distractedKey, false);
+		distractedAnimator.SetBool(distractedKey, true);
 		distractedEndTime = Time.time + undistractDelay;
 
 		alertGuyRoutine = null;
