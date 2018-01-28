@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 public class PlayerMind : MonoBehaviour {
-	public static PlayerMind inst;
+	public static PlayerMind Inst { get; private set; }
 
 	public PossessableBase realBody;
 	public PossessableBase currentBody;
@@ -26,8 +26,8 @@ public class PlayerMind : MonoBehaviour {
 
 	// Use this for initialization
 	void Start() {
-		if (inst) Debug.LogWarning("Two PlayerMinds in play!");
-		inst = this;
+		if (Inst) Debug.LogWarning("Two PlayerMinds in play!");
+		Inst = this;
 
 		possessHighlight = Instantiate(possessHighlightPrefab);
 		transferHighlight = Instantiate(transferHighlightPrefab);
@@ -98,6 +98,11 @@ public class PlayerMind : MonoBehaviour {
 			yield return null;
 		}
 
+		if (currentBody != realBody) {
+			transferDisplayCoroutine = null;
+			yield break;
+		}
+
 		startTime = endTime;
 		endTime = startTime + waitAtEndDuration;
 
@@ -106,7 +111,7 @@ public class PlayerMind : MonoBehaviour {
 			yield return null;
 		}
 
-		if (currentBody == realBody) transferHighlight.Stop();
+		transferHighlight.Stop();
 		transferDisplayCoroutine = null;
 	}
 }

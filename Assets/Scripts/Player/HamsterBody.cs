@@ -10,7 +10,7 @@ public class HamsterBody : PossessableBase {
 	public bool isAlive = true;
 
 	public float emptyGravityScale = 2f;
-
+	
 	public Animator animator;
 	public Physics2DMovement movement;
 
@@ -30,7 +30,17 @@ public class HamsterBody : PossessableBase {
 	}
 
 	public override void PossessedUpdate() {
-		movement.Move(Input.GetAxis("Horizontal"), Input.GetButton("Jump") ? 1 : 0);
+		float horizInput = Input.GetAxis("Horizontal");
+
+		Vector3 currScale = transform.localScale;
+		if (horizInput < -0.1f) {
+			currScale.x = -1;
+		} else if (horizInput > 0.1f) {
+			currScale.x = 1;
+		}
+		transform.localScale = currScale;
+
+		movement.Move(horizInput, Input.GetButton("Jump") ? 1 : 0);
 	}
 
 	protected override void OnPossessed() {
