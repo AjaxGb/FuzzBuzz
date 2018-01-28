@@ -32,9 +32,7 @@ public class RoombaBody : PossessableBase {
 		gameObject.layer = noRaycastLayer;
 
 		Debug.DrawRay(transform.position, moveDirection * reverseRaycastLength, Color.red);
-		RaycastHit2D hit;
-		if (hit = Physics2D.Raycast(transform.position, moveDirection, reverseRaycastLength)) {
-			Debug.Log(hit.collider.gameObject);
+		if (Physics2D.Raycast(transform.position, moveDirection, reverseRaycastLength)) {
 			movingLeft = !movingLeft;
 		}
 

@@ -86,6 +86,8 @@ public class PlayerMind : MonoBehaviour {
 			audioSource.PlayOneShot(transferSE);
 			transferDisplayCoroutine = StartCoroutine(
 				ShowTransfer(currentBody.transform, body.transform, transferTime, transferAtEndTime));
+		} else {
+			body.DoPossess(this);
 		}
 		currentBody = body;
 		possessHighlight.Stop();

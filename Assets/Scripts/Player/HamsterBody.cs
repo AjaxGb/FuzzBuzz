@@ -24,16 +24,18 @@ public class HamsterBody : PossessableBase {
 
 	private static Collider2D[] singleColliderArr = new Collider2D[1];
 
-	void Start() {
+	void Awake() {
 		if (!animator) animator = GetComponent<Animator>();
 		if (!movement) movement = GetComponent<Physics2DMovement>();
-
-		liveGravity = movement.rb.gravityScale;
-		emptyGravity = liveGravity * emptyGravityScale;
 
 		animKeyPossessed = Animator.StringToHash("Possessed");
 		animKeyInputStrength = Animator.StringToHash("InputStrength");
 		animKeyJump = Animator.StringToHash("Jump");
+	}
+
+	void Start() {
+		liveGravity = movement.rb.gravityScale;
+		emptyGravity = liveGravity * emptyGravityScale;
 	}
 
 	public override void PossessedUpdate() {
