@@ -12,6 +12,7 @@ public class PlayerMind : MonoBehaviour {
 	public ParticleSystem possessHighlightPrefab;
 	public ParticleSystem transferHighlightPrefab;
 
+	public float clickRadius = 5f;
 	public float transferTime = 1f;
 	public float transferAtEndTime = 0.2f;
 	
@@ -43,9 +44,11 @@ public class PlayerMind : MonoBehaviour {
 		if (stopUpdates) return;
 
 		if (currentBody == realBody) {
+			Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
 			PossessableBase target = PossessableBase.allActive
 				.Where(p => p.CanBePossessed(this))
-				.MinBy((k) => Vector3.Distance(k.transform.position, transform.position));
+				.MinBy(clickRadius * clickRadius, (k) => ((Vector2)k.transform.position - mousePos).sqrMagnitude);
 
 			if (target) {
 				if (target != lastTargetBody) possessHighlight.Pause();
@@ -76,11 +79,11 @@ public class PlayerMind : MonoBehaviour {
 		}
 		if (currentBody) {
 			currentBody.DoUnpossess();
+			stopUpdates = true;
 			transferDisplayCoroutine = StartCoroutine(
 				ShowTransfer(currentBody.transform, body.transform, transferTime, transferAtEndTime));
 		}
 		currentBody = body;
-		currentBody.DoPossess(this);
 		possessHighlight.Stop();
 	}
 
@@ -103,7 +106,9 @@ public class PlayerMind : MonoBehaviour {
 			transferHighlight.transform.position = Vector3.Lerp(from.position, to.position, t);
 			yield return null;
 		}
-
+		
+		currentBody.DoPossess(this);
+		stopUpdates = false;
 		if (currentBody != realBody) {
 			transferDisplayCoroutine = null;
 			yield break;
